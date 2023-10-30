@@ -6,15 +6,12 @@ import RowContainer from "./components/Container";
 function App() {
   const [movieRows, setMovieRows] = useState([]);
 
+  const movieArray = ["Batman", "Superman", "Avengers"];
+
   useEffect(() => {
     const fetchData = async function () {
-      const result1 = await Movies.getMovies("batman");
-      const movies1 = result1.data.Search;
-      const result2 = await Movies.getMovies("superman");
-      const movies2 = result2.data.Search;
-      const result3 = await Movies.getMovies("avengers");
-      const movies3 = result3.data.Search;
-      setMovieRows([movies1, movies2, movies3]);
+      const result = await Movies.getMovies(movieArray);
+      setMovieRows(result);
     };
     fetchData();
   }, []);
